@@ -1,0 +1,15 @@
+/*Adjacent Selector*/
+/*div + p{
+    background-color: yellow;
+}
+div ~ p:hover{
+    background-color: yellow;
+}*/
+div ~ p::first-letter
+{
+color: red;
+}
+a[target]
+{
+    background-color: cyan;
+}
