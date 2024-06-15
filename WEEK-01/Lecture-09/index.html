@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta chaset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./test.css" />
+    <title>Page Title</title>
+</head>
+
+<body>
+    <main>
+        <h1 onclick="changeText(this)">My Page Title</h1>
+
+        <div>
+            <button onclick="displayDate()">The time is:</button>
+            <p id="demo"></p>
+        </div>
+        <form>
+            <input type="text" id="firstName" onchange="upperCase()"/>
+        </form>
+        
+        <div onmousedown="mDown(this)" onmouseup="mUp(this)" style="background-color: red; width: 120px; height: 20px; padding: 40px;">
+            Mouse over me.
+        </div>
+        <div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color: red; width: 120px; height: 20px; padding: 40px;">
+            Mouse over me.
+        </div>
+        <script>
+            function changeText(id) {
+                id.innerHTML = "This is after click"
+            }
+            function displayDate(id) {
+                document.getElementById("demo").innerHTML = new Date();
+            }
+            function upperCase(){
+                const x = document.getElementById("firstName");
+                x.value= x.value.toUpperCase();
+            }
+            function mOver(obj){
+                obj.innerHTML = "Thank You";
+            }
+            function mOut(obj){
+                obj.innerHTML = "Mouse over me";
+            }
+            function mDown(obj){
+                obj.style.backgroundColor = "cyan";
+                obj.innerHTML = "Release Me";
+            }
+            function mUp(obj){
+                obj.style.backgroundColor = "yellow";
+                obj.innerHTML = "Thank You";
+            }
+            
+        </script>
+    </main>
+</body>
+
+</html>
