@@ -8,12 +8,12 @@
 console.log(x);
 
 
+-In a normal function,the this  keyword refers to the 
+object inside which the function is present
 var x = function(x,y)
 {
     return x + y;
-};
--In a normal function,the this  keyword refers to the 
-object inside which the function is present*/
+};*/
 
 /*-In arrow function, this keyword is present inside the global scope/overall class its
  defining or the object from which it was invoked.
