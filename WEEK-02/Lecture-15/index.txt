@@ -1,0 +1,13 @@
+* package-lock.json- are automatically generated when all the dependencies of your react or node project are installed 
+                  on your device.
+
+* package.json- contains list of scripts we use and the dependencies(libraries) management information present there.
+              like- react,react-dom,react-scripts,web-vitals,testing libraries. 
+
+* public- contains static files inside react application
+
+-index.html: React is a SPA(Single Page Application), it can sustain and support 100s of webpages that's controlled by a single html document.
+-robots.txt: for SEO(Search Engine Optimization) purposes.
+
+* src-most important, contains informationlike css files, test components and relevant javascript files which contribute to the functionality of
+      the application,about how the app behaves,reacts and handle different scenarios.
