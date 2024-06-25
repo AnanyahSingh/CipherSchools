@@ -1,6 +1,6 @@
 Understanding JSX
 
-1. JSX looks and behaves like HTML.
+1. JSX looks and behaves LIKE HTML.
 2. JSX can contain 2 things.
    -HTML Tags 
    -React Components
