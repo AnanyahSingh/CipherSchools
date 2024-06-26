@@ -1,13 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import ToDoScreen from "./screens/ToDoScreen";
 
-function App() {
-  return (
-    <div>
-      <h1>Hello from CipherSchools.
-      </h1>
-    </div>
-  );
+class App extends Component{
+render(){
+    return <ToDoScreen />;
+}
 }
 
 export default App;

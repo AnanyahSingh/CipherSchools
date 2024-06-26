@@ -5,3 +5,23 @@ Understanding JSX
    -HTML Tags 
    -React Components
 3. JSX allows us to write JS code inside
+
+
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  const NAME = "CipherSchools";
+  return (
+    <div>
+      <h1 
+      style={{
+        color:"red",
+        textAlign:"center"
+      }}
+      >Hello From {NAME}</h1>
+    </div>
+  );
+}
+
+export default App;
