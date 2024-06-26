@@ -1,4 +1,4 @@
-React Component:
+Understanding React Components:
 1.Some Logic
 2.Some UI Code
 
