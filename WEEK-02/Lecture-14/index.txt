@@ -1,1 +1,0 @@
-This lecture consisted of importing the a create react app folder and configuring our systems accordingly.

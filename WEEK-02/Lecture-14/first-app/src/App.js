@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-import { Component } from "react";
-import ToDoScreen from "./screens/ToDoScreen";
-
-class App extends Component{
-render(){
-    return <ToDoScreen />;
-}
-=======
+// eslint-disable-next-line no-unused-vars
 import logo from './logo.svg';
 import './App.css';
+
 function App() {
-  const Name="CipherSchools"
+  const NAME = "CipherSchools";
   return (
     <div>
       <h1 
@@ -18,10 +11,9 @@ function App() {
         color:"red",
         textAlign:"center"
       }}
-      >Hello From {Name}</h1>
+      >Hello From {NAME}</h1>
     </div>
   );
->>>>>>> origin/main
 }
 
 export default App;
