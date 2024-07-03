@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 *Added link and script tag CDNs
 APP.JS:
@@ -30,7 +29,6 @@ INDEX.CSS:-
 .center{
   text-align: center;
 }
-=======
 
 *Added link and script tag CDNs
 APP.JS:
@@ -62,4 +60,3 @@ INDEX.CSS:-
 .center{
   text-align: center;
 }
->>>>>>> 2a994e8af97f3b10506e67963e9642d99ee5a6b4
