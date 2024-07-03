@@ -1,0 +1,40 @@
+When we have a variable that is being constantly changing and 
+the change in the variable can cause the content on the screen
+to change, they should be stored in a special variable, i.e STATE.
+
+State:A variable present in a component used to store variable that
+      can dynamically change.
+
+*It is preferred to use state as an object when using class type 
+component and store all the variable inside the object.
+
+*When using State variable inside a React component whether it is object
+-based or functional, it isnt allowed to dynamically change that particular
+variable like any javascript variable, for that we have SETTER FUNCTION.
+
+import { Component } from "react";
+
+class ToDoScreen extends Component {
+state = {
+    taskCount: 0,
+};
+    
+    render() {
+        return (
+            <div className="screen">
+                <h1 className="ui-heading center">To-Do List</h1>
+                <div>
+                    <button onClick={(e) => 
+                    {
+                        this.setState({...this.state, taskCount: this.state.taskCount + 1,});
+                        console.log(this.state.taskCount);
+                    }
+                    } className="ui secondary button">Add Task</button>
+                    <p>Number of tasks: {this.state.taskCount} </p>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default ToDoScreen;
