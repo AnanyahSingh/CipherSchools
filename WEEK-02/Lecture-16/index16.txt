@@ -6,7 +6,7 @@ Understanding JSX
    -React Components
 3. JSX allows us to write JS code inside
 
-
+since logo isnt in use: use the line mentioned below
 // eslint-disable-next-line no-unused-vars
 import logo from './logo.svg';
 import './App.css';
