@@ -1,6 +1,7 @@
-React Component:
+Understanding React Components:
 1.Some Logic
 2.Some UI Code
+
 
 -React Components are LIKE functions.
 -They contain some logical code and they return some UI.

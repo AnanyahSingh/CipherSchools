@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 *Added link and script tag CDNs
 APP.JS:
@@ -29,3 +30,36 @@ INDEX.CSS:-
 .center{
   text-align: center;
 }
+=======
+
+*Added link and script tag CDNs
+APP.JS:
+
+import { Component } from "react";
+import ToDoScreen from "./screens/ToDoScreen";
+class App extends Component{
+render(){
+    return <ToDoScreen />;
+ }
+}
+export default App;
+-----------------------------------------------------
+
+TO-DOSCREEN.JS:-
+
+import { Component } from "react";
+class ToDoScreen extends Component{
+    render(){
+        return <h1 className="ui-heading center">To-Do List</h1>;
+}
+}
+
+export default ToDoScreen;
+-----------------------------------------------------
+
+INDEX.CSS:-
+
+.center{
+  text-align: center;
+}
+>>>>>>> 2a994e8af97f3b10506e67963e9642d99ee5a6b4
