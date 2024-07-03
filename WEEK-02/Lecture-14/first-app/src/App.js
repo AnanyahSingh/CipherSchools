@@ -6,12 +6,17 @@ function App() {
   const NAME = "CipherSchools";
   return (
     <div>
-      <h1 
-      style={{
-        color:"red",
-        textAlign:"center"
-      }}
-      >Hello From {NAME}</h1>
+      <div>
+        <h1
+          style={{
+            color: "red",
+            textAlign: "center"
+          }}
+        >Hello From {NAME}</h1>
+      </div>
+      <div>
+        <p>This is {NAME}</p>
+      </div>
     </div>
   );
 }
