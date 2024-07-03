@@ -1,24 +1,22 @@
 // eslint-disable-next-line no-unused-vars
 import logo from './logo.svg';
 import './App.css';
+import { Component } from "react";
 
-function App() {
-  const NAME = "CipherSchools";
-  return (
-    <div>
+class App extends Component {
+  NAME = "Ananya!";
+  render() {
+    return (
+      <>
       <div>
-        <h1
-          style={{
-            color: "red",
-            textAlign: "center"
-          }}
-        >Hello From {NAME}</h1>
+        <h1>This is {this.NAME}</h1>
       </div>
       <div>
-        <p>This is {NAME}</p>
+        <p>This is paragraph and name is: {this.NAME}</p>
       </div>
-    </div>
-  );
+      </>
+    );
+  }
 }
 
 export default App;
