@@ -1,0 +1,85 @@
+Functional Components 
+*are lightweight and easy to use,
+*Use hooks,
+*Reusable,
+*cant use extensions or inheritance(therefore hooks).
+
+Hooks- Reusable functions that do some part of certain activity.
+       The inbuilt hooks in react help bring power of class-based
+       components into functional components.
+
+*all hooks start with the word "use".
+-> useState
+TaskCount= state variable, setTaskCount=setter function
+
+============================================================================================
+APP.JS
+
+import { Component } from "react";
+import ToDoScreen from "./screens/ToDoScreen";
+/*class App extends Component{
+render(){
+    return <ToDoScreen />;
+ }
+}*/
+const App = () => {
+    return<ToDoScreen/>}
+export default App;
+===============================================================================================
+
+TODOSCREEN.JS
+
+import { useState } from "react";
+import Task from "../components/task";
+
+/*class ToDoScreen extends Component {
+state = {
+    taskCount: 0,
+};
+    
+    render() {
+        return (
+            <div className="screen">
+                <h1 className="ui-heading center">To-Do List</h1>
+                <div>
+                    <button onClick={(e) => 
+                    {
+                        this.setState({...this.state, taskCount: this.state.taskCount + 1,});
+                        console.log(this.state.taskCount);
+                    }
+                    } className="ui secondary button">Add Task</button>
+                    <p>Number of tasks: {this.state.taskCount} </p>
+                </div>
+            </div>
+        );
+    }
+}*/
+
+const ToDoScreen = () => {
+    const[taskList,setTaskList]=useState([]);
+    return(
+        <div className="screen">
+        <h1 className="ui-heading center">To-Do List</h1>
+        <div>
+            <button onClick={(e) => 
+            {   setTaskList([...taskList,{
+                    title: "Go to gym",
+                    description: "Going to gym is good for muscle growth.",
+                },]);
+            }}
+            className="ui secondary button">Add Task</button>
+            {taskList.map((task) =>(<Task/>))}
+        </div>
+    </div>
+    );
+    }
+export default ToDoScreen;
+=============================================================================================
+
+TASK.JS
+
+const Task = () =>{
+    return <h6>Task</h6>
+}
+
+export default Task;
