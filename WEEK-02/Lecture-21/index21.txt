@@ -1,0 +1,107 @@
+PROPS
+
+Created Date Utility javascript file.
+
+========================================================================
+
+ToDoScreen.JS
+
+import { useState } from "react";
+import Task from "../components/task";
+/*class ToDoScreen extends Component {
+state = {
+    taskCount: 0,
+};
+    render() {
+        return (
+            <div className="screen">
+                <h1 className="ui-heading center">To-Do List</h1>
+                <div>
+                    <button onClick={(e) => 
+                    {
+                        this.setState({...this.state, taskCount: this.state.taskCount + 1,});
+                        console.log(this.state.taskCount);
+                    }
+                    } className="ui secondary button">Add Task</button>
+                    <p>Number of tasks: {this.state.taskCount} </p>
+                </div>
+            </div>
+        );
+    }
+}*/
+const ToDoScreen = () => {
+    const[taskList,setTaskList]=useState([]);
+    return(
+        <div className="screen">
+        <h1 className="ui-heading center">To-Do List</h1>
+        <div>
+            <button onClick={(e) => 
+            {
+                setTaskList([...taskList,{
+                    title: "Go to gym",
+                    description: "Going to gym is good for muscle growth.",
+                    createdDate: new Date(),
+                },
+            ]);
+            }}
+            className="ui secondary button">Add Task</button>
+            <div className="ui cards">
+                {taskList.map((task) => (
+                    <Task task={task} /> //argument for task with value task
+                ))}
+            </div>
+        </div>
+    </div>
+    );}
+export default ToDoScreen;
+=====================================================================================
+
+TASK.JS
+
+import { formatDate } from "../utils/DateUtils";
+const Task = ({ task: { title, description, createdDate } }) => {
+    return (
+        <div className="card">
+            <div className="content">
+                <div className="header">{title}</div>
+                <div className="meta">{formatDate(createdDate)}</div>
+                <div className="description">{description}</div>
+            </div>
+             <div className="extra content">
+                <div className="ui two buttons">
+                    <div className="ui basic green button">Edit</div>
+                    <div className="ui basic red button">Delete</div>
+                </div>
+            </div>
+        </div>
+    );
+};
+export default Task;
+================================================================================
+
+DATEUTILS.JS
+
+import { formatDate } from "../utils/DateUtils";
+
+const Task = ({ task: { title, description, createdDate } }) => {
+    return (
+        <div className="card">
+            <div className="content">
+                <div className="header">{title}</div>
+                <div className="meta">{formatDate(createdDate)}</div>
+                <div className="description">{description}</div>
+            </div>
+             <div className="extra content">
+                <div className="ui two buttons">
+                    <div className="ui basic green button">Edit</div>
+                    <div className="ui basic red button">Delete</div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Task;
+
+
+
