@@ -1,3 +1,4 @@
+Adding the first component:
 
 *Added link and script tag CDNs
 APP.JS:
