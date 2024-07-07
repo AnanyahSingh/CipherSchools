@@ -45,12 +45,14 @@ const ToDoScreen = () => {
             ]);
             }}
             className="ui secondary button">Add Task</button>
-            <div className="ui cards">
-                {taskList.map((task) => (
-                    <Task task={task} /> //argument for task with value task
-                ))}
+            <section>
+                    <div className="ui cards">
+                        {taskList.map((task, index) => (
+                            <Task task={task} key={index} />
+                        ))}
+                    </div>
+                </section>
             </div>
-        </div>
     </div>
     );}
 export default ToDoScreen;
@@ -82,7 +84,6 @@ export default Task;
 DATEUTILS.JS
 
 import { formatDate } from "../utils/DateUtils";
-
 const Task = ({ task: { title, description, createdDate } }) => {
     return (
         <div className="card">
@@ -100,7 +101,6 @@ const Task = ({ task: { title, description, createdDate } }) => {
         </div>
     );
 };
-
 export default Task;
 
 
