@@ -5,6 +5,10 @@ import AddTask from "../components/AddTask";
 const ToDoScreen = () => {
     const [taskList, setTaskList] = useState([]);
 
+    let addNewTask = (task) => {
+        setTaskList([...taskList,{...task, createdDate: new Date() }]);
+    };
+    
     return (
         <div className="screen">
             <h1 className="ui-heading center">To-Do List</h1>
