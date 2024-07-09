@@ -1,0 +1,104 @@
+TWO WAY BINDING
+
+This refers to the synchronization of data
+between the state and the User Interface.
+==========================================================
+
+TODOSCREEN.JS
+
+import { useState } from "react";
+import Task from "../components/task";
+import AddTask from "../components/AddTask";
+const ToDoScreen = () => {
+    const [taskList, setTaskList] = useState([]);
+
+    let addNewTask = (task) => {
+        setTaskList([...taskList,{...task, createdDate: new Date() }]);
+    };
+    return (
+        <div className="screen">
+            <h1 className="ui-heading center">To-Do List</h1>
+            <div>
+                <button onClick={() => {
+                    setTaskList([...taskList, {
+                        title: "Go to gym",
+                        description: "Going to gym is good for muscle growth.",
+                        createdDate: new Date(),
+                    }]);
+                }} className="ui secondary button">Add Task</button>
+                <section>
+                    <div className="ui cards">
+                        {taskList.map((task, index) => (
+                            <Task task={task} key={index} />
+                        ))}
+                    </div>
+                </section>
+            </div>
+            <AddTask onSubmit={addNewTask}/>
+        </div>
+    );
+};
+export default ToDoScreen;
+============================================================================================
+
+ADDTASK.JS
+
+import React, { useState } from "react";
+
+const AddTask = ({ onSubmit }) => {
+    const [task, setTask] = useState({
+        title: "",
+        description: "",
+    });
+
+    const handleInputChange = (e) => {
+        setTask({
+            ...task,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(task);
+        onSubmit(task);
+        setTask({
+            title: "",
+            description: "",
+        });
+    };
+
+    return (
+        <>
+            <h3 className="ui heading center">Add New Task</h3>
+            <div className="ui form">
+                <form onSubmit={onFormSubmit}>
+                    <div className="field">
+                        <div className="field">
+                            <label>Title</label>
+                            <input
+                                type="text"
+                                spellCheck={false}
+                                placeholder="Task Title"
+                                name="title"
+                                onChange={handleInputChange}
+                                value={task.title}
+                            />
+                        </div>
+                        <label>Description</label>
+                        <textarea
+                            rows="2"
+                            spellCheck={false}
+                            placeholder="Task Description"
+                            name="description"
+                            onChange={handleInputChange}
+                            value={task.description}
+                        ></textarea>
+                    </div>
+                    <button type="submit" className="ui primary button">Submit</button>
+                </form>
+            </div>
+        </>
+    );
+};
+export default AddTask;
