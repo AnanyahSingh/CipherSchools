@@ -8,7 +8,7 @@ const ToDoScreen = () => {
     let addNewTask = (task) => {
         setTaskList([...taskList,{...task, createdDate: new Date() }]);
     };
-    
+
     return (
         <div className="screen">
             <h1 className="ui-heading center">To-Do List</h1>
@@ -28,7 +28,7 @@ const ToDoScreen = () => {
                     </div>
                 </section>
             </div>
-            <AddTask />
+            {/* <AddTask onSubmit={addNewTask}/> */}
         </div>
     );
 };

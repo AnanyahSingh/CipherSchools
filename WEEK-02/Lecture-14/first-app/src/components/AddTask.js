@@ -1,40 +1,59 @@
-import { useState } from "react";
-const AddTask = () => {
+import React, { useState } from "react";
 
+const AddTask = ({ onSubmit }) => {
     const [task, setTask] = useState({
-        title:"",
-        description:"",
+        title: "",
+        description: "",
     });
-    let handleInputChange = (e) => {
-      setTask({
-        ...task, [e.target.name]: e.target.value,
-      });
+
+    const handleInputChange = (e) => {
+        setTask({
+            ...task,
+            [e.target.name]: e.target.value,
+        });
     };
-    let onFormSubmit = (e) => {
+
+    const onFormSubmit = (e) => {
         e.preventDefault();
         console.log(task);
+        onSubmit(task);
+        setTask({
+            title: "",
+            description: "",
+        });
     };
+
     return (
-        <>
-        <h3 className="ui heading center">Add New Task</h3>
+        <section className="screen">
+            <h3 className="ui heading center">Add New Task</h3>
             <div className="ui form">
                 <form onSubmit={onFormSubmit}>
                     <div className="field">
                         <div className="field">
                             <label>Title</label>
-                            <input type="text" spellCheck={false} 
-                            data-ms-editor={true} placeholder="Task Title" 
-                            name="title" onChange={handleInputChange}/>
+                            <input
+                                type="text"
+                                spellCheck={false}
+                                placeholder="Task Title"
+                                name="title"
+                                onChange={handleInputChange}
+                                value={task.title}
+                            />
                         </div>
-                        <label>Short Text</label>
-                        <textarea rows="2" spellCheck={false} 
-                        data-ms-editor={true} placeholder="Task Description" 
-                        name="description" onChange={handleInputChange}></textarea>
+                        <label>Description</label>
+                        <textarea
+                            rows="2"
+                            spellCheck={false}
+                            placeholder="Task Description"
+                            name="description"
+                            onChange={handleInputChange}
+                            value={task.description}
+                        ></textarea>
                     </div>
                     <button type="submit" className="ui primary button">Submit</button>
-                </form >
+                </form>
             </div>
-        </>
+        </section>
     );
 };
 
