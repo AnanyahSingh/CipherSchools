@@ -1,0 +1,164 @@
+Introduction to Context
+
+Context provides a means to share values like state, functions, or any data across the component tree
+without passing props down manually at every level. This is particularly useful for global data that many
+components need to access.
+
+Provider- is a component that gives the information to all the components registered with this Provider.
+
+TaskContext- is a context object, which is the info you want to share and the entity that shres the info
+            with the components that need it.
+
+Children-props are passed from parent to child, but children is a powerful feature that allows you to 
+        create flexible, reusable components that can be customized with any content you want.
+
+useContext is used to read TaskContext info.
+===================================================================================================================================
+
+TASKCONTEXT.JS
+
+import { createContext, useState } from "react";
+const TaskContext = createContext();
+const TaskProvider = ({ children }) => {
+    //state
+    const [taskList, setTaskList] = useState([]);//empty array
+
+    //function
+    const addNewTask = (task) => {
+        setTaskList([...taskList, { ...task, createdDate: new Date() }]);
+    };
+    return (
+        /*whatever info is written between the tag below, will have the JSX 
+        value (in the value) shared across*/
+        <TaskContext.Provider value={{taskList, addNewTask}}>
+            {children}  
+            </TaskContext.Provider>
+    );
+};
+export { TaskProvider };
+export default TaskContext;
+==================================================================================================================================
+
+APP.JS
+
+import ToDoScreen from "./screens/ToDoScreen";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AddTask from "./components/AddTask";
+import { TaskProvider } from "./context/TaskContext"; // Import TaskProvider
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <ToDoScreen />,
+    },
+    {
+        path: "/add-task",
+        element: <AddTask />,
+    },
+]);
+
+const App = () => {
+    return (
+        <TaskProvider>
+            <RouterProvider router={router} />
+        </TaskProvider>
+    );
+};
+export default App;
+=================================================================================================================================
+
+TODOSCREEN.JS
+
+import { useContext } from "react";
+import Task from "../components/Task";
+import AddTask from "../components/AddTask";
+import TaskContext from "../context/TaskContext";
+import { useNavigate } from "react-router-dom";
+const ToDoScreen = () => {
+    const {taskList} = useContext(TaskContext);
+    const navigate = useNavigate();
+    return (
+        <>
+        <div className="screen">
+            <h1 className="ui-heading center">To-Do List</h1>
+            <div>
+                 <button onClick={(e) => {
+                    navigate("/add-task")
+                    }}
+                 className="ui secondary button">Add Task</button> 
+                <section>
+                    <div className="ui cards">
+                        {taskList.map((task, index) => (
+                            <Task task={task} key={index} />
+                        ))}
+                    </div>
+                </section>
+            </div>
+            {/* <AddTask onSubmit={addNewTask}/> */}
+        </div>
+        </>
+    );
+};
+export default ToDoScreen;
+=================================================================================================================================
+
+ADDTASK.JS
+
+import React, { useContext, useState } from "react";
+import TaskContext from "../context/TaskContext";
+import { useNavigate } from "react-router-dom";
+
+const AddTask = () => {
+    const {addNewTask} = useContext(TaskContext);
+    const navigate = useNavigate();
+    const [task, setTask] = useState({
+        title: "",
+        description: "",
+    });
+    const handleInputChange = (e) => {
+        setTask({
+            ...task,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(task);
+        addNewTask(task);
+        setTask({});
+        navigate("/");
+    };
+    return (
+        <section className="screen">
+            <h3 className="ui heading center">Add New Task</h3>
+            <div className="ui form">
+                <form onSubmit={onFormSubmit}>
+                    <div className="field">
+                        <div className="field">
+                            <label>Title</label>
+                            <input
+                                type="text"
+                                spellCheck={false}
+                                placeholder="Task Title"
+                                name="title"
+                                onChange={handleInputChange}
+                                value={task.title}
+                            />
+                        </div>
+                        <label>Description</label>
+                        <textarea
+                            rows="2"
+                            spellCheck={false}
+                            placeholder="Task Description"
+                            name="description"
+                            onChange={handleInputChange}
+                            value={task.description}
+                        ></textarea>
+                    </div>
+                    <button type="submit" className="ui primary button">Submit</button>
+                </form>
+            </div>
+        </section>
+    );
+};
+export default AddTask;
+
